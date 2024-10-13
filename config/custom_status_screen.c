@@ -13,8 +13,6 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
-LV_IMG_DECLARE(zenlogo);
- LV_IMG_DECLARE(layers2);
 
 #if IS_ENABLED(CONFIG_CUSTOM_WIDGET_BATTERY_STATUS)
 static struct zmk_widget_battery_status battery_status_widget;
@@ -26,10 +24,6 @@ static struct zmk_widget_output_status output_status_widget;
 
 #if IS_ENABLED(CONFIG_CUSTOM_WIDGET_PERIPHERAL_STATUS)
 static struct zmk_widget_peripheral_status peripheral_status_widget;
-#endif
-
-#if IS_ENABLED(CONFIG_CUSTOM_WIDGET_LAYER_STATUS)
-static struct zmk_widget_layer_status layer_status_widget;
 #endif
 
 lv_obj_t *zmk_display_status_screen() {
