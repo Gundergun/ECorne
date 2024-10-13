@@ -7,9 +7,7 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/outputs.h>
 
 / {
     chosen {
@@ -53,7 +51,7 @@
 &trans   &kp N1        &kp N2        &kp N3    &kp N4        &kp N5             &kp N6     &kp N7      &kp N8            &kp N9             &kp N0           &trans
 &kp TAB  &kp LALT      &none         &kp C_PP  &kp UP_ARROW  &kp PRINTSCREEN    &kp MINUS  &kp EQUAL   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp BACKSLASH    &kp TILDE
 &trans   &bt BT_SEL 0  &bt BT_SEL 1  &kp LEFT  &kp DOWN      &kp RIGHT          &kp SLCK   &kp C_MUTE  &kp C_VOL_DN      &kp C_VOL_UP       &kp PAUSE_BREAK  &kp RCTRL
-                                     &kp LALT  &kp SPACE     &trans             &trans     &kp ENTER   &ext_power EP_TOG
+                                     &kp LALT  &kp SPACE     &trans             &trans     &kp ENTER   &trans
             >;
         };
 
