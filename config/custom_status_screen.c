@@ -8,7 +8,6 @@
 #include "widgets/battery_status.h"
 #include "widgets/peripheral_status.h"
 #include "widgets/output_status.h"
-#include "widgets/layer_status.h"
 #include "custom_status_screen.h"
 
 #include <zephyr/logging/log.h>
@@ -61,32 +60,7 @@ void full_refresh_timer_cb() { k_work_submit_to_queue(zmk_display_work_q(), &ful
 K_TIMER_DEFINE(full_refresh_timer, full_refresh_timer_cb, NULL);
 #endif
  
-  #if IS_ENABLED(CONFIG_CUSTOM_WIDGET_LAYER_STATUS)
-   lv_obj_t *LayersHeading;
-   LayersHeading = lv_img_create(screen);
-    lv_obj_align(LayersHeading, LV_ALIGN_BOTTOM_MID, 0, -30);
-    lv_img_set_src(LayersHeading, &layers2);
 
-    zmk_widget_layer_status_init(&layer_status_widget, screen);
-   lv_obj_set_style_text_font(zmk_widget_layer_status_obj(&layer_status_widget),
-                               &lv_font_montserrat_16, LV_PART_MAIN);
-   lv_obj_align(zmk_widget_layer_status_obj(&layer_status_widget), LV_ALIGN_BOTTOM_MID, 0, -5);
-  #endif                                   
-#if CONFIG_ZMK_DISPLAY_FULL_REFRESH_PERIOD > 0
-    k_timer_start(&full_refresh_timer, K_SECONDS(CONFIG_ZMK_DISPLAY_FULL_REFRESH_PERIOD),
-                  K_SECONDS(CONFIG_ZMK_DISPLAY_FULL_REFRESH_PERIOD));
-#endif
-
-#if CONFIG_ZMK_DISPLAY_FULL_REFRESH_PERIOD > 0
-    k_timer_stop(&full_refresh_timer);
-#endif
-
- #if !IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL)
-  lv_obj_t *zenlogo_icon;
-   zenlogo_icon = lv_img_create(screen);
-  lv_img_set_src(zenlogo_icon, &zenlogo);
-   lv_obj_align(zenlogo_icon, LV_ALIGN_BOTTOM_MID, 0, -5);
-   #endif    
 
     return screen;
 }
